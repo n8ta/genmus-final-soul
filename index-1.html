@@ -65,7 +65,7 @@
             color: 'white',
             padding: '4rem',
             maxWidth: '50vw',
-            backgroundColor: 'rgba(0,0,0,.5)'
+            backgroundColor: 'rgba(0,0,0,.65)'
         }}>
             {child}
         </div>
@@ -105,13 +105,15 @@
                 community by performing with a quartet of White female singers rather than a gospel quartet.
             </p>
             <div style={{display: 'flex', flexDirection: 'row'}}>
-                    <p style={{flexBasis: '50%'}}>
+                <p style={{flexBasis: '50%'}}>
                     Many of his performances were threatened by the KKK and Cooke received frequent death threats. This
                     backdrop of hate underlies so much of Cooke’s presentation as a performer. Being acceptable to White
-                    America may not have been just a way for Cooke to achieve crossover success, but also a way to cope with
+                    America may not have been just a way for Cooke to achieve crossover success, but also a way to cope
+                    with
                     a repressive society while building the fame he desired after eclipsing gospel.
-                    </p>
-                <div style={{flexBasis: '50%', flexGrow: 0,
+                </p>
+                <div style={{
+                    flexBasis: '50%', flexGrow: 0,
                     backgroundImage: "url('cooke.png')",
                     backgroundSize: 'contain'
                 }}>
@@ -134,12 +136,46 @@
         </div>
     )
 
+    const MoTown = () => (
+        <div>
+            <h1>MoTown Records</h1>
+            <p>
+                Early soul performers like Cooke were often attempting to be palatable to a white audience. This was
+                more common in MoTown Soul the variety of soul native to Detroit with a significantly more pop bent.
+                MoTown was the first label to commercialize soul music, a significant step just a few years after soul
+                departed from gospel.
+            </p>
+            <p>
+                MoTown, the record label, frequently utilized a small group of very talented in-house musicians to
+                professionalize new soul sounds. This group of studio musicians, <em>The Funk Brothers </em>
+                played on 100+ of MoTown hits.
+            </p>
+
+            <div className="centerUs">
+                <img src="funk.png" style={{width: '100%'}}/>
+                <em>The Funk Brother's played on 'I Heard It Through the Grapevine', 'My Girl', and many other
+                    tracks</em>
+            </div>
+            <p>
+                In the transition from gospel to MoTown style pop it became much more common
+                for female MoTown singers to sing in much higher, less
+                bluesier registers than would later become common in soul.
+            </p>
+            <p>MoTown's first breakout hit was Shop Around by the Miracles</p>
+            <div className="evenly">
+                <Album url="https://open.spotify.com/embed/track/47IRIQxGDe2Sc6F4pe2FMf" text="1961"/>
+                <Album url="https://open.spotify.com/embed/track/1OppEieGNdItZbE14gLBEv" text="1966"/>
+            </div>
+        </div>
+    )
+
     const Section = ({name}) => (
-        <div style={{fontSize: '3rem',
+        <div style={{
+            fontSize: '3rem',
             padding: '2rem',
             fontFamily: 'ultra',
             backgroundColor: "#eca638",
-            }} className="evenly">
+        }} className="evenly">
 
             {name}
         </div>
@@ -147,6 +183,7 @@
 
     const char = <Artist child={<Charles/>}/>
     const sk = <Artist child={<Cooke/>}/>
+    const motwn = <Artist child={<MoTown/>}/>
 
 
     const App = () => {
@@ -155,10 +192,9 @@
                 <Section name="Gospel to Soul"/>
                 <Background image="./charles.png" inner={char}>
                 </Background>
-                <Background
-                    image="./cookesmall.jpg" inner={sk}>
-                </Background>
+                <Background image="./cookesmall.jpg" inner={sk}/>
                 <Section name="MoTown and Chicago Soul"/>
+                <Background image="./hitts.jpg" inner={motwn}/>
             </div>
         )
     }
