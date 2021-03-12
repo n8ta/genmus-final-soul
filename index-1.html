@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Don't be evil</title>
+    <script type="application/javascript" src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+    <script type="application/javascript"
+            src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+    <script type="application/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<style>
+    body {
+        font-size: 1.5rem;
+    }
+
+    .evenly {
+        display: flex;
+        justify-content: space-evenly;
+    }
+</style>
+<body style="margin:0;padding:0">
+<div id="root" style="margin:0;padding:0"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+
+<script type="text/babel">
+    const rootElement = document.getElementById('root')
+
+    const Background = ({image, inner}) => {
+        return (
+            <div style={{
+                width: "100%",
+                backgroundImage: 'url(' + image + ')',
+                height: 'auto',
+
+                display: 'flex',
+                backdropFilter: 'blur(5px)',
+                justifyContent: 'center'
+            }}>
+                {inner}
+            </div>
+        )
+    }
+
+    const Album = ({url, text}) => (
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <iframe src={url} width="300" height="300"
+                    frameBorder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+            {text}
+
+        </div>
+    )
+
+    const Charles = () => {
+        return (
+        <div style={{
+            color: 'white',
+            padding: '4rem',
+            maxWidth: '50vw',
+            backgroundColor: 'rgba(0,0,0,.9)'
+        }}>
+            <h1>Ray Charles</h1>
+            <p style={{}}>
+                Ray Charles ("Brother Ray") was one of the very first pioneers of soul music. And like many of the
+                first
+                soul musicians he pulled heavily form gospel.
+            </p>
+            <p>
+
+                One of Charle’s first hits after escaping poverty was I’ve got a woman, he originally claimed it to
+                be an original work,
+                but later admitted it was a rearrangement of the gospel It must be jesus.
+            </p>
+            <div className="evenly">
+                <Album url="https://open.spotify.com/embed/track/7M99tD8uA2EyeArWWGvoP8"
+                       text="1954"/>
+                <Album url="https://open.spotify.com/embed/track/2xar08Fq5xra2KKZs5Bw9j"
+                       text="1957"/>
+            </div>
+        </div>)
+    }
+
+
+    ReactDOM.render(
+        <Background image="./charles.png" inner={<Charles />}>}
+        </Background>,
+        rootElement
+    )
+</script>
+
+</body>
+
+</html>
