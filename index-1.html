@@ -21,6 +21,11 @@
         display: flex;
         justify-content: space-evenly;
     }
+
+    @font-face {
+        font-family: 'ultra';
+        src: url('Ultra-Regular.ttf')
+    }
 </style>
 <body style="margin:0;padding:0">
 <div id="root" style="margin:0;padding:0"></div>
@@ -32,21 +37,19 @@
 <script type="text/babel">
     const rootElement = document.getElementById('root')
 
-    const Background = ({image, inner}) => {
-        return (
-            <div style={{
-                width: "100%",
-                backgroundImage: 'url(' + image + ')',
-                height: 'auto',
+    const Background = ({image, inner, customStyle}) => (
+        <div style={{
+            width: "100%",
+            backgroundImage: 'url(' + image + ')',
+            height: 'auto',
 
-                display: 'flex',
-                backdropFilter: 'blur(5px)',
-                justifyContent: 'center'
-            }}>
-                {inner}
-            </div>
-        )
-    }
+            display: 'flex',
+            justifyContent: 'center',
+            ...customStyle,
+        }}>
+            {inner}
+        </div>
+    )
 
     const Album = ({url, text}) => (
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -57,39 +60,111 @@
         </div>
     )
 
-    const Charles = () => {
-        return (
+    const Artist = ({child}) => (
         <div style={{
             color: 'white',
             padding: '4rem',
             maxWidth: '50vw',
-            backgroundColor: 'rgba(0,0,0,.9)'
+            backgroundColor: 'rgba(0,0,0,.5)'
         }}>
-            <h1>Ray Charles</h1>
-            <p style={{}}>
-                Ray Charles ("Brother Ray") was one of the very first pioneers of soul music. And like many of the
-                first
-                soul musicians he pulled heavily form gospel.
-            </p>
-            <p>
+            {child}
+        </div>
+    )
 
-                One of Charle’s first hits after escaping poverty was I’ve got a woman, he originally claimed it to
-                be an original work,
-                but later admitted it was a rearrangement of the gospel It must be jesus.
-            </p>
-            <div className="evenly">
-                <Album url="https://open.spotify.com/embed/track/7M99tD8uA2EyeArWWGvoP8"
-                       text="1954"/>
-                <Album url="https://open.spotify.com/embed/track/2xar08Fq5xra2KKZs5Bw9j"
-                       text="1957"/>
+    const Charles = () => {
+        return (
+            <div>
+                <h1>Ray Charles</h1>
+                <p>
+                    Ray Charles ("Brother Ray") was one of the very first pioneers of soul music. And like many of the
+                    first
+                    soul musicians he pulled heavily form gospel.
+                </p>
+                <p>
+
+                    One of Charle’s first hits after escaping poverty was I’ve got a woman, he originally claimed it to
+                    be an original work, but later admitted it was a rearrangement of the gospel It must be jesus.
+                </p>
+                <div className="evenly">
+                    <Album url="https://open.spotify.com/embed/track/7M99tD8uA2EyeArWWGvoP8"
+                           text="1954"/>
+                    <Album url="https://open.spotify.com/embed/track/2xar08Fq5xra2KKZs5Bw9j"
+                           text="1957"/>
+                </div>
             </div>
-        </div>)
+        )
     }
 
+    const Cooke = () => (
+        <div>
+            <h1>Sam Cooke</h1>
+            <p>
+                Cooke was a performer deeply aware of and constantly managing his audience. He had been raised as a
+                gospel singer in his Father’s church, and over the course of several US gospel tours, Cooke became the
+                biggest name in Gospel. On his successful single, “You Send Me,” Cooke pulls away from the gospel
+                community by performing with a quartet of White female singers rather than a gospel quartet.
+            </p>
+            <div style={{display: 'flex', flexDirection: 'row'}}>
+                    <p style={{flexBasis: '50%'}}>
+                    Many of his performances were threatened by the KKK and Cooke received frequent death threats. This
+                    backdrop of hate underlies so much of Cooke’s presentation as a performer. Being acceptable to White
+                    America may not have been just a way for Cooke to achieve crossover success, but also a way to cope with
+                    a repressive society while building the fame he desired after eclipsing gospel.
+                    </p>
+                <div style={{flexBasis: '50%', flexGrow: 0,
+                    backgroundImage: "url('cooke.png')",
+                    backgroundSize: 'contain'
+                }}>
+                </div>
+            </div>
+            <p>Exemplifying these politics of respectability is his upbeat and lighthearted rendition of "Chain
+                Gang"</p>
+            <Album url="https://open.spotify.com/embed/track/7v1858htfU0srTDwhxeka8" text="1960"/>
+
+            <p>Following the same pattern as Charles we also see Cooke adapting gospel in his earliest secular works.
+                But, as a major gospel performer Cooke felt the need to hedge his bets by publishing Lovable under the
+                <em> pseudonym</em> Dale Cook. His iconic voice was quickly recognized by many in the gospel
+                community rushing his transition to secular music.
+            </p>
+
+            <div className="evenly">
+                <Album url="https://open.spotify.com/embed/track/6WnNIMorpPRQoFGsOmUrum" text="1950-56"/>
+                <Album url="https://open.spotify.com/embed/track/4S84QlBamUPkjvOBqUBddS" text="1956"/>
+            </div>
+        </div>
+    )
+
+    const Section = ({name}) => (
+        <div style={{fontSize: '3rem',
+            padding: '2rem',
+            fontFamily: 'ultra',
+            backgroundColor: "#eca638",
+            }} className="evenly">
+
+            {name}
+        </div>
+    )
+
+    const char = <Artist child={<Charles/>}/>
+    const sk = <Artist child={<Cooke/>}/>
+
+
+    const App = () => {
+        return (
+            <div>
+                <Section name="Gospel to Soul"/>
+                <Background image="./charles.png" inner={char}>
+                </Background>
+                <Background
+                    image="./cookesmall.jpg" inner={sk}>
+                </Background>
+                <Section name="MoTown and Chicago Soul"/>
+            </div>
+        )
+    }
 
     ReactDOM.render(
-        <Background image="./charles.png" inner={<Charles />}>}
-        </Background>,
+        <App/>,
         rootElement
     )
 </script>
