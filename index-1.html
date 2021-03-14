@@ -19,7 +19,12 @@
 
     .evenly {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-evenly;
+
+    }
+    .evenly * {
+        margin-top: 1rem;
     }
 
     @font-face {
@@ -64,6 +69,8 @@
         <div style={{
             color: 'white',
             padding: '4rem',
+            paddingBottom: '1rem',
+            paddingTop: '1rem',
             maxWidth: '50vw',
             backgroundColor: 'rgba(0,0,0,.65)'
         }}>
@@ -152,10 +159,17 @@
             </p>
 
             <div className="centerUs">
-                <img src="funk.png" style={{width: '100%'}}/>
-                <em>The Funk Brother's played on 'I Heard It Through the Grapevine', 'My Girl', and many other
-                    tracks</em>
+                <img src="funk.png" style={{width: '80%'}}/>
+                <div>
+                    <em>The Funk Brother's played on 'I Heard It Through the Grapevine', 'My Girl', and many other
+                        tracks</em>
+                </div>
             </div>
+        </div>
+    )
+
+    const MoTown2 = () => (
+        <div>
             <p>
                 In the transition from gospel to MoTown style pop it became much more common
                 for female MoTown singers to sing in much higher, less
@@ -166,6 +180,51 @@
                 <Album url="https://open.spotify.com/embed/track/47IRIQxGDe2Sc6F4pe2FMf" text="1961"/>
                 <Album url="https://open.spotify.com/embed/track/1OppEieGNdItZbE14gLBEv" text="1966"/>
             </div>
+        </div>
+    )
+
+    const ChiSoul = () => (
+        <div>
+            <h1>Chicago Soul</h1>
+            <p>
+                Chicago soul was jazzier, bluesier, and lighter than MoTown blues. While still being very popular,
+                Chicago soul departed from what white audiences were expecting far more than MoTown. Chicago soul
+                produced some of the first civil rights oriented soul music as well as non-political popular music.
+            </p>
+            <p>
+                Side by side we have: the popular "Oh, What a Night - The Dell’s" and the political "People Get Ready -
+                The Impressions
+                " - The Impressions. While political soul music often contained specific critique of oppressive systems
+                it rarely did do so by departing from the smooth sound that characterizes much of the genre.
+            </p>
+            <div className="evenly">
+                <Album url="https://open.spotify.com/embed/track/2ht21Rlf8L6cPLBkYmhpcs" text="1959"/>
+                <Album url="https://open.spotify.com/embed/track/6AeG6jSoAVbmUFO6LyYmBf" text="1965"/>
+            </div>
+        </div>
+    )
+
+    const Modern = () => (
+        <div>
+            <h1>Two Categories of Modern Soul</h1>
+            <h2>Contemporary R&B & Classic Soul</h2>
+            <p>Modern soul is divided into two fairly stark categories: soul music that sounds a great deal like it did
+                in the 1950s and significantly more modern soul music. Exemplifying the former camp are Charles Bradley
+                Leon Bridges, “who dresses exclusively in vintage clothing and sings like Sam Cooke”. An intentional
+                appeal to classic soul. Bradley on the other hand draws his comparison to soul with his own extensive
+                life experience.
+            </p>
+            <p>
+                In the modern camp are artists like Erykah Badu. Badu’s music is far more political than Bradley &
+                Bridges. Specifically New Amerykah opines many of the same issues we saw classic soul chronicling in a
+                far more modern style.
+            </p>
+            <div className="evenly">
+                <Album url="https://open.spotify.com/embed/track/3383YdXBetq1jnpo3BAxXW" text="2007"/>
+                <Album url="https://open.spotify.com/embed/track/2qcPsPqgTpl1KYgVptu3Oc" text="2013"/>
+                <Album url="https://open.spotify.com/embed/track/65GbQI9VDTs7vo6MJL2iJA" text="2015"/>
+            </div>
+
         </div>
     )
 
@@ -184,17 +243,25 @@
     const char = <Artist child={<Charles/>}/>
     const sk = <Artist child={<Cooke/>}/>
     const motwn = <Artist child={<MoTown/>}/>
+    const motown2 = <Artist child={<MoTown2/>}/>
+    const chisoul = <Artist child={<ChiSoul/>}/>
+    const modern = <Artist child={<Modern/>}/>
 
 
     const App = () => {
         return (
             <div>
                 <Section name="Gospel to Soul"/>
-                <Background image="./charles.png" inner={char}>
-                </Background>
+                <Background image="./charles.png" inner={char}/>
                 <Background image="./cookesmall.jpg" inner={sk}/>
                 <Section name="MoTown and Chicago Soul"/>
                 <Background image="./hitts.jpg" inner={motwn}/>
+                <Background image="./smokeysmall.jpg" inner={motown2}/>
+                <Background image="./impressionscopy.jpg" inner={chisoul}/>
+                <Section name="Modern Soul - Evolutions"/>
+                <Background image="./badu.webp" inner={modern}/>
+
+
             </div>
         )
     }
